@@ -52,12 +52,12 @@ exports.doraMiddleStage = {
     fontApi: [],
     initData: '', // 初始化数据脚本
     pluginsConfig: ` 
-    exports.doraMiddleStage = {\n
+    module.exports = {\n
         enable: true,\n        package: 'egg-dora-middleStage',
     };\n
     `, // 插入到 plugins.js 中的配置
     defaultConfig: `
-    doraMiddleStageRouter:{\n
+    module.exports = {\n
         match: [ctx => ctx.path.startsWith('/manage/singleUser')],\n
     },\n
     `, // 插入到 config.default.js 中的配置
