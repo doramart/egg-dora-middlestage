@@ -2,16 +2,13 @@
  * @Author: doramart 
  * @Date: 2019-09-23 14:44:21 
  * @Last Modified by: doramart
- * @Last Modified time: 2019-11-01 23:26:19
+ * @Last Modified time: 2020-08-01 17:05:44
  */
-
-
 
 let DoraMiddleStageController = {
 
 
     async sendVerificationCode(ctx, app) {
-        // '/api/singleUser/sendVerificationCode'
 
         try {
 
@@ -106,8 +103,47 @@ let DoraMiddleStageController = {
             });
         }
 
-    }
+    },
 
+    async getClientNotice(ctx, app) {
+
+        try {
+
+            let payload = ctx.query;
+
+            let noticeList = await ctx.helper.reqJsonData(app.config.doracms_api + '/api/clientNotice/getList', payload);
+
+            ctx.helper.renderSuccess(ctx, {
+                data: noticeList
+            });
+
+        } catch (error) {
+            ctx.helper.renderFail(ctx, {
+                message: error
+            });
+        }
+
+    },
+
+    async getVersionMaintenanceInfo(ctx, app) {
+
+        try {
+
+            let payload = ctx.query;
+
+            let noticeList = await ctx.helper.reqJsonData(app.config.doracms_api + '/api/versionMaintenance/getList', payload);
+
+            ctx.helper.renderSuccess(ctx, {
+                data: noticeList
+            });
+
+        } catch (error) {
+            ctx.helper.renderFail(ctx, {
+                message: error
+            });
+        }
+
+    },
 
 }
 
